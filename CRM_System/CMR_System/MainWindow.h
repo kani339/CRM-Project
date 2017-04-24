@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Customer_Form.h"
-
+#include "Customer_List.h"
 
 namespace CMR_System {
 
@@ -37,12 +37,26 @@ namespace CMR_System {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^  btnSubmit;
+
+
+
+
+	private: System::Windows::Forms::Button^  addCustomer_btn;
+	private: System::Windows::Forms::Button^  customerList_btn;
+	private: System::Windows::Forms::Label^  infoBlock;
+	private: System::Windows::Forms::Label^  wlcMsg;
+	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::MenuStrip^  menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^  fileToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  exitToolStripMenuItem1;
 	private: System::Windows::Forms::ToolStripMenuItem^  exitToolStripMenuItem;
-	private: System::Windows::Forms::TreeView^  leftMenu;
+	private: System::Windows::Forms::PictureBox^  pictureBox1;
+
+
+
+
+	private: System::ComponentModel::IContainer^  components;
+
 
 	protected:
 
@@ -52,7 +66,7 @@ namespace CMR_System {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -61,26 +75,86 @@ namespace CMR_System {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::TreeNode^  treeNode1 = (gcnew System::Windows::Forms::TreeNode(L"1"));
-			System::Windows::Forms::TreeNode^  treeNode2 = (gcnew System::Windows::Forms::TreeNode(L"Add Customer", gcnew cli::array< System::Windows::Forms::TreeNode^  >(1) { treeNode1 }));
-			this->btnSubmit = (gcnew System::Windows::Forms::Button());
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MainWindow::typeid));
+			this->addCustomer_btn = (gcnew System::Windows::Forms::Button());
+			this->customerList_btn = (gcnew System::Windows::Forms::Button());
+			this->infoBlock = (gcnew System::Windows::Forms::Label());
+			this->wlcMsg = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->exitToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->exitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->leftMenu = (gcnew System::Windows::Forms::TreeView());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->menuStrip1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// btnSubmit
+			// addCustomer_btn
 			// 
-			this->btnSubmit->Location = System::Drawing::Point(12, 50);
-			this->btnSubmit->Name = L"btnSubmit";
-			this->btnSubmit->Size = System::Drawing::Size(100, 23);
-			this->btnSubmit->TabIndex = 0;
-			this->btnSubmit->Text = L"Add Customer";
-			this->btnSubmit->UseVisualStyleBackColor = true;
-			this->btnSubmit->Click += gcnew System::EventHandler(this, &MainWindow::btnSubmit_Click);
+			this->addCustomer_btn->AllowDrop = true;
+			this->addCustomer_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->addCustomer_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->addCustomer_btn->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->addCustomer_btn->ForeColor = System::Drawing::Color::White;
+			this->addCustomer_btn->Location = System::Drawing::Point(174, 40);
+			this->addCustomer_btn->Name = L"addCustomer_btn";
+			this->addCustomer_btn->Size = System::Drawing::Size(122, 29);
+			this->addCustomer_btn->TabIndex = 6;
+			this->addCustomer_btn->Text = L"Add Customer";
+			this->addCustomer_btn->UseVisualStyleBackColor = false;
+			this->addCustomer_btn->Click += gcnew System::EventHandler(this, &MainWindow::addCustomer_btn_Click);
+			// 
+			// customerList_btn
+			// 
+			this->customerList_btn->AllowDrop = true;
+			this->customerList_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->customerList_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->customerList_btn->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->customerList_btn->ForeColor = System::Drawing::Color::White;
+			this->customerList_btn->Location = System::Drawing::Point(302, 40);
+			this->customerList_btn->Name = L"customerList_btn";
+			this->customerList_btn->Size = System::Drawing::Size(122, 29);
+			this->customerList_btn->TabIndex = 6;
+			this->customerList_btn->Text = L"Customer List";
+			this->customerList_btn->UseVisualStyleBackColor = false;
+			this->customerList_btn->Click += gcnew System::EventHandler(this, &MainWindow::customerList_btn_Click);
+			// 
+			// infoBlock
+			// 
+			this->infoBlock->AutoSize = true;
+			this->infoBlock->BackColor = System::Drawing::Color::White;
+			this->infoBlock->Location = System::Drawing::Point(153, 109);
+			this->infoBlock->Name = L"infoBlock";
+			this->infoBlock->Padding = System::Windows::Forms::Padding(390, 120, 185, 255);
+			this->infoBlock->Size = System::Drawing::Size(575, 388);
+			this->infoBlock->TabIndex = 8;
+			// 
+			// wlcMsg
+			// 
+			this->wlcMsg->AutoSize = true;
+			this->wlcMsg->BackColor = System::Drawing::Color::White;
+			this->wlcMsg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->wlcMsg->Location = System::Drawing::Point(163, 138);
+			this->wlcMsg->Name = L"wlcMsg";
+			this->wlcMsg->Size = System::Drawing::Size(565, 48);
+			this->wlcMsg->TabIndex = 9;
+			this->wlcMsg->Text = L"Welcome To CRM System.\r\nAll in one place to maintain relationship with your custo"
+				L"mer.\r\n";
+			this->wlcMsg->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(134, 266);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(0, 13);
+			this->label1->TabIndex = 10;
 			// 
 			// menuStrip1
 			// 
@@ -90,8 +164,8 @@ namespace CMR_System {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(284, 24);
-			this->menuStrip1->TabIndex = 1;
+			this->menuStrip1->Size = System::Drawing::Size(784, 24);
+			this->menuStrip1->TabIndex = 11;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// fileToolStripMenuItem
@@ -104,41 +178,26 @@ namespace CMR_System {
 			// exitToolStripMenuItem1
 			// 
 			this->exitToolStripMenuItem1->Name = L"exitToolStripMenuItem1";
-			this->exitToolStripMenuItem1->Size = System::Drawing::Size(152, 22);
+			this->exitToolStripMenuItem1->Size = System::Drawing::Size(92, 22);
 			this->exitToolStripMenuItem1->Text = L"Exit";
-			this->exitToolStripMenuItem1->Click += gcnew System::EventHandler(this, &MainWindow::exitToolStripMenuItem1_Click);
+			this->exitToolStripMenuItem1->Click += gcnew System::EventHandler(this, &MainWindow::exitToolStripMenuItem1_Click_1);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this->exitToolStripMenuItem->Name = L"exitToolStripMenuItem";
 			this->exitToolStripMenuItem->Size = System::Drawing::Size(52, 20);
 			this->exitToolStripMenuItem->Text = L"About";
+			this->exitToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWindow::exitToolStripMenuItem_Click_1);
 			// 
-			// leftMenu
+			// pictureBox1
 			// 
-			this->leftMenu->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
-				static_cast<System::Int32>(static_cast<System::Byte>(224)));
-			this->leftMenu->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->leftMenu->ForeColor = System::Drawing::Color::Transparent;
-			this->leftMenu->Indent = 20;
-			this->leftMenu->ItemHeight = 60;
-			this->leftMenu->LineColor = System::Drawing::Color::White;
-			this->leftMenu->Location = System::Drawing::Point(0, 81);
-			this->leftMenu->Margin = System::Windows::Forms::Padding(1);
-			this->leftMenu->Name = L"leftMenu";
-			treeNode1->Name = L"Node0";
-			treeNode1->Text = L"1";
-			treeNode2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
-				static_cast<System::Int32>(static_cast<System::Byte>(224)));
-			treeNode2->ForeColor = System::Drawing::Color::Black;
-			treeNode2->Name = L"customerList";
-			treeNode2->NodeFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			treeNode2->Text = L"Add Customer";
-			this->leftMenu->Nodes->AddRange(gcnew cli::array< System::Windows::Forms::TreeNode^  >(1) { treeNode2 });
-			this->leftMenu->Size = System::Drawing::Size(233, 150);
-			this->leftMenu->TabIndex = 3;
-			this->leftMenu->AfterSelect += gcnew System::Windows::Forms::TreeViewEventHandler(this, &MainWindow::treeView1_AfterSelect);
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(12, 38);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(122, 60);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 12;
+			this->pictureBox1->TabStop = false;
 			// 
 			// MainWindow
 			// 
@@ -146,37 +205,58 @@ namespace CMR_System {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
 				static_cast<System::Int32>(static_cast<System::Byte>(224)));
-			this->ClientSize = System::Drawing::Size(284, 261);
-			this->Controls->Add(this->leftMenu);
-			this->Controls->Add(this->btnSubmit);
+			this->ClientSize = System::Drawing::Size(784, 562);
+			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->wlcMsg);
+			this->Controls->Add(this->infoBlock);
+			this->Controls->Add(this->customerList_btn);
+			this->Controls->Add(this->addCustomer_btn);
 			this->Controls->Add(this->menuStrip1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MainWindow";
-			this->Text = L"CRM";
+			this->Text = L"CRM - Content Relationship Managment";
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	//Add Cusotmer
-	private: System::Void btnSubmit_Click(System::Object^  sender, System::EventArgs^  e) {
-		//Customer_Form^ cust_form = gcnew Customer_Form();
-		//cust_form->Show();
-	}
 	
 
-	/*Menu Tree List*/
-	private: System::Void treeView1_AfterSelect(System::Object^  sender, System::Windows::Forms::TreeViewEventArgs^  e) {
+	//Add Customer Form
+	private: System::Void addCustomer_btn_Click(System::Object^  sender, System::EventArgs^  e) {
 		Customer_Form^ cust_form = gcnew Customer_Form();
 		cust_form->Show();
 		this->Hide();
 	}
 
+
+	//Customer List Form
+	private: System::Void customerList_btn_Click(System::Object^  sender, System::EventArgs^  e) {
+		Customer_List^ cust_list = gcnew Customer_List();
+		cust_list->Show();
+		this->Hide();
+	}
+
+
 	//Exit Programm
-	private: System::Void exitToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void exitToolStripMenuItem1_Click_1(System::Object^  sender, System::EventArgs^  e) {
 		Application::Exit();
 	}
+
+	//About section
+	private: System::Void exitToolStripMenuItem_Click_1(System::Object^  sender, System::EventArgs^  e) {
+		//MessageBox::Show("Customer relationship management (CRM) is an approach to managing a company's interaction with current and potential future customers. It tries to analyze data about customers' history with a company and to improve business relationships with customers, specifically focusing on customer retention and ultimately driving sales growth.One important aspect of the CRM approach is the systems of CRM that compile data from a range of different communication channels, including a company's website, telephone, email, live chat, marketing materials, and more recently, social media.[2] Through the CRM approach and the systems used to facilitate it, businesses learn more about their target audiences and how to best cater to their needs. However, adopting the CRM approach may also occasionally lead to favoritism within an audience of consumers, resulting in dissatisfaction among customers and defeating the purpose of CRM.",
+			//"About",MessageBoxIcon::Question);
+
+	}
+
+	
+
 };
 }

@@ -21,6 +21,9 @@
     <ClCompile Include="Customer_Form.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Customer_List.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainWindow.h">
@@ -29,9 +32,15 @@
     <ClInclude Include="Customer_Form.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Customer_List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainWindow.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer_Form.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>
