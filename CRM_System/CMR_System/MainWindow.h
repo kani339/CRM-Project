@@ -2,6 +2,7 @@
 
 #include "Customer_Form.h"
 #include "Customer_List.h"
+#include "Login_Form.h"
 
 namespace CMR_System {
 
@@ -55,6 +56,7 @@ namespace CMR_System {
 
 
 
+
 	private: System::ComponentModel::IContainer^  components;
 
 
@@ -99,7 +101,7 @@ namespace CMR_System {
 			this->addCustomer_btn->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->addCustomer_btn->ForeColor = System::Drawing::Color::White;
-			this->addCustomer_btn->Location = System::Drawing::Point(174, 40);
+			this->addCustomer_btn->Location = System::Drawing::Point(174, 45);
 			this->addCustomer_btn->Name = L"addCustomer_btn";
 			this->addCustomer_btn->Size = System::Drawing::Size(122, 29);
 			this->addCustomer_btn->TabIndex = 6;
@@ -116,7 +118,7 @@ namespace CMR_System {
 			this->customerList_btn->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->customerList_btn->ForeColor = System::Drawing::Color::White;
-			this->customerList_btn->Location = System::Drawing::Point(302, 40);
+			this->customerList_btn->Location = System::Drawing::Point(302, 45);
 			this->customerList_btn->Name = L"customerList_btn";
 			this->customerList_btn->Size = System::Drawing::Size(122, 29);
 			this->customerList_btn->TabIndex = 6;
@@ -128,7 +130,7 @@ namespace CMR_System {
 			// 
 			this->infoBlock->AutoSize = true;
 			this->infoBlock->BackColor = System::Drawing::Color::White;
-			this->infoBlock->Location = System::Drawing::Point(153, 109);
+			this->infoBlock->Location = System::Drawing::Point(164, 122);
 			this->infoBlock->Name = L"infoBlock";
 			this->infoBlock->Padding = System::Windows::Forms::Padding(390, 120, 185, 255);
 			this->infoBlock->Size = System::Drawing::Size(575, 388);
@@ -140,7 +142,7 @@ namespace CMR_System {
 			this->wlcMsg->BackColor = System::Drawing::Color::White;
 			this->wlcMsg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->wlcMsg->Location = System::Drawing::Point(163, 138);
+			this->wlcMsg->Location = System::Drawing::Point(170, 138);
 			this->wlcMsg->Name = L"wlcMsg";
 			this->wlcMsg->Size = System::Drawing::Size(565, 48);
 			this->wlcMsg->TabIndex = 9;
@@ -251,10 +253,13 @@ namespace CMR_System {
 
 	//About section
 	private: System::Void exitToolStripMenuItem_Click_1(System::Object^  sender, System::EventArgs^  e) {
-		//MessageBox::Show("Customer relationship management (CRM) is an approach to managing a company's interaction with current and potential future customers. It tries to analyze data about customers' history with a company and to improve business relationships with customers, specifically focusing on customer retention and ultimately driving sales growth.One important aspect of the CRM approach is the systems of CRM that compile data from a range of different communication channels, including a company's website, telephone, email, live chat, marketing materials, and more recently, social media.[2] Through the CRM approach and the systems used to facilitate it, businesses learn more about their target audiences and how to best cater to their needs. However, adopting the CRM approach may also occasionally lead to favoritism within an audience of consumers, resulting in dissatisfaction among customers and defeating the purpose of CRM.",
-			//"About",MessageBoxIcon::Question);
+		MessageBox::Show("Customer relationship management (CRM) is an approach to managing a company's interaction with current and potential future customers. It tries to analyze data about customers' history with a company and to improve business relationships with customers, specifically focusing on customer retention and ultimately driving sales growth.One important aspect of the CRM approach is the systems of CRM that compile data from a range of different communication channels, including a company's website, telephone, email, live chat, marketing materials, and more recently, social media.[2] Through the CRM approach and the systems used to facilitate it, businesses learn more about their target audiences and how to best cater to their needs. However, adopting the CRM approach may also occasionally lead to favoritism within an audience of consumers, resulting in dissatisfaction among customers and defeating the purpose of CRM.","About");
+		//MessageBoxIcon::Question;
 
 	}
+	
+	
+
 
 	
 

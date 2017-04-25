@@ -137,6 +137,7 @@
   <ItemGroup>
     <ClCompile Include="Customer_Form.cpp" />
     <ClCompile Include="Customer_List.cpp" />
+    <ClCompile Include="Login_Form.cpp" />
     <ClCompile Include="MainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +145,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Customer_List.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Login_Form.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MainWindow.h">
@@ -156,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customer_List.resx">
       <DependentUpon>Customer_List.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login_Form.resx">
+      <DependentUpon>Login_Form.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.h</DependentUpon>

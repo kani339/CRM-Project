@@ -1,7 +1,10 @@
 #pragma once
 
+#include <fstream>
+
 namespace CMR_System {
 
+	using namespace std;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -93,6 +96,13 @@ namespace CMR_System {
 	
 	//On form load, appear content from file
 	private: System::Void Customer_List_Load(System::Object^  sender, System::EventArgs^  e) {
+		
+		ifstream readFile;
+		readFile.open("mystring.data");
+		if (!readFile) {
+			MessageBox::Show("Couldn't open file!");
+			
+		}
 
 	}
 

@@ -68,14 +68,13 @@ namespace CMR_System {
 	private: System::Windows::Forms::TextBox^  noteInput;
 	private: System::Windows::Forms::Label^  note_label;
 	private: System::Windows::Forms::TextBox^  nameInput;
-	private: System::Windows::Forms::Label^  webSite;
-	private: System::Windows::Forms::TextBox^  webSite_input;
+	private: System::Windows::Forms::Label^  emailLabel;
+	private: System::Windows::Forms::TextBox^  email_input;
+
+
+	private: System::Windows::Forms::Label^  label2;
 
 	private: System::ComponentModel::IContainer^  components;
-
-
-
-
 
 
 	protected:
@@ -104,8 +103,9 @@ namespace CMR_System {
 			this->phoneInput = (gcnew System::Windows::Forms::TextBox());
 			this->noteInput = (gcnew System::Windows::Forms::TextBox());
 			this->note_label = (gcnew System::Windows::Forms::Label());
-			this->webSite = (gcnew System::Windows::Forms::Label());
-			this->webSite_input = (gcnew System::Windows::Forms::TextBox());
+			this->emailLabel = (gcnew System::Windows::Forms::Label());
+			this->email_input = (gcnew System::Windows::Forms::TextBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -122,7 +122,7 @@ namespace CMR_System {
 			// nameInput
 			// 
 			this->nameInput->Cursor = System::Windows::Forms::Cursors::Arrow;
-			this->nameInput->Location = System::Drawing::Point(147, 117);
+			this->nameInput->Location = System::Drawing::Point(147, 103);
 			this->nameInput->MaxLength = 60;
 			this->nameInput->Name = L"nameInput";
 			this->nameInput->Size = System::Drawing::Size(109, 20);
@@ -133,7 +133,7 @@ namespace CMR_System {
 			this->nameLabel->AutoSize = true;
 			this->nameLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->nameLabel->Location = System::Drawing::Point(42, 117);
+			this->nameLabel->Location = System::Drawing::Point(42, 101);
 			this->nameLabel->Name = L"nameLabel";
 			this->nameLabel->Size = System::Drawing::Size(55, 20);
 			this->nameLabel->TabIndex = 2;
@@ -141,7 +141,7 @@ namespace CMR_System {
 			// 
 			// surnameInput
 			// 
-			this->surnameInput->Location = System::Drawing::Point(147, 170);
+			this->surnameInput->Location = System::Drawing::Point(147, 156);
 			this->surnameInput->MaxLength = 60;
 			this->surnameInput->Name = L"surnameInput";
 			this->surnameInput->Size = System::Drawing::Size(109, 20);
@@ -152,7 +152,7 @@ namespace CMR_System {
 			this->surnameLabel->AutoSize = true;
 			this->surnameLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->surnameLabel->Location = System::Drawing::Point(38, 170);
+			this->surnameLabel->Location = System::Drawing::Point(38, 154);
 			this->surnameLabel->Name = L"surnameLabel";
 			this->surnameLabel->Size = System::Drawing::Size(78, 20);
 			this->surnameLabel->TabIndex = 4;
@@ -160,7 +160,7 @@ namespace CMR_System {
 			// 
 			// saveBtn
 			// 
-			this->saveBtn->Location = System::Drawing::Point(137, 473);
+			this->saveBtn->Location = System::Drawing::Point(137, 451);
 			this->saveBtn->Name = L"saveBtn";
 			this->saveBtn->Size = System::Drawing::Size(75, 23);
 			this->saveBtn->TabIndex = 5;
@@ -173,7 +173,7 @@ namespace CMR_System {
 			this->customerPhone->AutoSize = true;
 			this->customerPhone->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->customerPhone->Location = System::Drawing::Point(38, 229);
+			this->customerPhone->Location = System::Drawing::Point(42, 214);
 			this->customerPhone->Name = L"customerPhone";
 			this->customerPhone->Size = System::Drawing::Size(59, 20);
 			this->customerPhone->TabIndex = 6;
@@ -181,14 +181,14 @@ namespace CMR_System {
 			// 
 			// phoneInput
 			// 
-			this->phoneInput->Location = System::Drawing::Point(147, 229);
+			this->phoneInput->Location = System::Drawing::Point(147, 216);
 			this->phoneInput->Name = L"phoneInput";
 			this->phoneInput->Size = System::Drawing::Size(100, 20);
 			this->phoneInput->TabIndex = 7;
 			// 
 			// noteInput
 			// 
-			this->noteInput->Location = System::Drawing::Point(137, 346);
+			this->noteInput->Location = System::Drawing::Point(137, 328);
 			this->noteInput->Multiline = true;
 			this->noteInput->Name = L"noteInput";
 			this->noteInput->Size = System::Drawing::Size(226, 94);
@@ -199,37 +199,51 @@ namespace CMR_System {
 			this->note_label->AutoSize = true;
 			this->note_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->note_label->Location = System::Drawing::Point(38, 346);
+			this->note_label->Location = System::Drawing::Point(40, 338);
 			this->note_label->Name = L"note_label";
 			this->note_label->Size = System::Drawing::Size(55, 20);
 			this->note_label->TabIndex = 9;
 			this->note_label->Text = L"Notes:";
 			// 
-			// webSite
+			// emailLabel
 			// 
-			this->webSite->AutoSize = true;
-			this->webSite->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->emailLabel->AutoSize = true;
+			this->emailLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->webSite->Location = System::Drawing::Point(38, 291);
-			this->webSite->Name = L"webSite";
-			this->webSite->Size = System::Drawing::Size(79, 20);
-			this->webSite->TabIndex = 10;
-			this->webSite->Text = L"Web-Site:";
+			this->emailLabel->Location = System::Drawing::Point(38, 273);
+			this->emailLabel->Name = L"emailLabel";
+			this->emailLabel->Size = System::Drawing::Size(57, 20);
+			this->emailLabel->TabIndex = 10;
+			this->emailLabel->Text = L"E-mail:";
 			// 
-			// webSite_input
+			// email_input
 			// 
-			this->webSite_input->Location = System::Drawing::Point(147, 293);
-			this->webSite_input->Name = L"webSite_input";
-			this->webSite_input->Size = System::Drawing::Size(100, 20);
-			this->webSite_input->TabIndex = 11;
+			this->email_input->Location = System::Drawing::Point(147, 275);
+			this->email_input->Name = L"email_input";
+			this->email_input->Size = System::Drawing::Size(100, 20);
+			this->email_input->TabIndex = 11;
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label2->ForeColor = System::Drawing::Color::Green;
+			this->label2->Location = System::Drawing::Point(134, 507);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(120, 16);
+			this->label2->TabIndex = 12;
+			this->label2->Text = L"Succesfully Added";
+			this->label2->Visible = false;
 			// 
 			// Customer_Form
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(454, 540);
-			this->Controls->Add(this->webSite_input);
-			this->Controls->Add(this->webSite);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->email_input);
+			this->Controls->Add(this->emailLabel);
 			this->Controls->Add(this->note_label);
 			this->Controls->Add(this->noteInput);
 			this->Controls->Add(this->phoneInput);
@@ -261,6 +275,7 @@ namespace CMR_System {
 	//Save to File
 	private: System::Void saveBtn_Click(System::Object^  sender, System::EventArgs^  e) {
 
+			Customer_Struct customer_info;
 			ofstream fileCreate;
 
 
@@ -268,7 +283,7 @@ namespace CMR_System {
 			String^ s_surnameInp = surnameInput->Text;
 			String^ phone_inp = phoneInput->Text;
 			String^ note_inp = noteInput->Text;
-			String^ web_link = webSite_input->Text;
+			String^ email_inp = email_input->Text;
 
 			//Check if fields are not empty 
 			/*
@@ -282,7 +297,7 @@ namespace CMR_System {
 			char* customerSurname = and_SysStringToChar(s_surnameInp);
 			char* customerPhone = and_SysStringToChar(phone_inp);
 			char* customerNotes = and_SysStringToChar(note_inp);
-			char* webLink = and_SysStringToChar(web_link);
+			char* customerEmail = and_SysStringToChar(email_inp);
 
 			//Validate customer name
 			for (int i = 0; i < strlen(customerName); i++)
@@ -315,16 +330,30 @@ namespace CMR_System {
 					customerSurname[i + 1] = tolower(customerSurname[i + 1]);
 				}
 
+
+				//Save Data
 				fileCreate.open("mystring.data", ios::app);
-				fileCreate << customerName << endl;
-				fileCreate << customerSurname << endl;
-				fileCreate << customerPhone << endl;
-				fileCreate << webLink << endl;
-				fileCreate << customerNotes << endl;
 
+				if (!fileCreate) {
+					MessageBox::Show("Couldn't create a file");
+				}
+				else {
 
+					//fileCreate.write((char*)customer_info, sizeof(Customer_Struct));
+	
+					fileCreate << customerName << endl;
+					fileCreate << customerSurname << endl;
+					fileCreate << customerPhone << endl;
+					fileCreate << customerEmail << endl;
+					fileCreate << customerNotes << endl;
+					fileCreate.close();
+
+				}
+
+				//Show text when data saved
+				this->label2->Visible = true;
 			}
-			fileCreate.close();
+			
 			
 			//Empty Fields after clicked save button
 			nameInput->Text = "";
