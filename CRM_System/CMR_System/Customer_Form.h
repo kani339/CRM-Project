@@ -299,6 +299,9 @@ namespace CMR_System {
 			char* customerNotes = and_SysStringToChar(note_inp);
 			char* customerEmail = and_SysStringToChar(email_inp);
 
+			customer_info.customerName;
+			customer_info.customerSurname;
+
 			//Validate customer name
 			for (int i = 0; i < strlen(customerName); i++)
 			{
@@ -338,14 +341,15 @@ namespace CMR_System {
 					MessageBox::Show("Couldn't create a file");
 				}
 				else {
-
-					//fileCreate.write((char*)customer_info, sizeof(Customer_Struct));
-	
+					/*
 					fileCreate << customerName << endl;
 					fileCreate << customerSurname << endl;
 					fileCreate << customerPhone << endl;
 					fileCreate << customerEmail << endl;
 					fileCreate << customerNotes << endl;
+
+					*/
+					//fileCreate.write((char*)customer_info,sizeof(Customer_Struct));
 					fileCreate.close();
 
 				}
@@ -360,7 +364,7 @@ namespace CMR_System {
 			surnameInput->Text = "";
 			phoneInput->Text = "";
 			noteInput->Text = "";
-			webSite_input->Text = "";
+			email_input->Text = "";
 
 
 			

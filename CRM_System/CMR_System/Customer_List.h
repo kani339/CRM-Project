@@ -59,14 +59,12 @@ namespace CMR_System {
 			// 
 			// list_body
 			// 
-			this->list_body->AutoSize = true;
 			this->list_body->BackColor = System::Drawing::Color::White;
 			this->list_body->Location = System::Drawing::Point(29, 9);
 			this->list_body->Name = L"list_body";
-			this->list_body->Padding = System::Windows::Forms::Padding(150, 300, 450, 300);
 			this->list_body->Size = System::Drawing::Size(631, 613);
 			this->list_body->TabIndex = 0;
-			this->list_body->Text = L"Hello";
+			
 			// 
 			// Customer_List
 			// 
@@ -80,13 +78,8 @@ namespace CMR_System {
 			this->Text = L"Customer List";
 			this->Load += gcnew System::EventHandler(this, &Customer_List::Customer_List_Load);
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
-
-
-		
-
 
 
 
@@ -97,13 +90,30 @@ namespace CMR_System {
 	//On form load, appear content from file
 	private: System::Void Customer_List_Load(System::Object^  sender, System::EventArgs^  e) {
 		
+		/*
 		ifstream readFile;
 		readFile.open("mystring.data");
 		if (!readFile) {
 			MessageBox::Show("Couldn't open file!");
 			
 		}
+		else {
+			readFile.seekg(0, ios::end);
+			int size = readFile.tellg();
+			int count = size / sizeof(Customer_Struct);
+			readFile.seekg(0, ios::beg);
+			Customer_Struct *customer_struct = new Customer_Struct[count];
+			readFile.read((char*)customer_struct, count * sizeof(Customer_Struct));
+			
+			for (int i = 0; i < count; i++)
+			{
+				//this->list_body->Text = L"Hello";
 
+			}
+			
+			readFile.close();
+		}
+		*/
 	}
 
 

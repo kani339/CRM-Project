@@ -59,6 +59,8 @@ namespace CMR_System {
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::Label^  label5;
 
 	private:
 		/// <summary>
@@ -81,6 +83,8 @@ namespace CMR_System {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// loginLabel
@@ -118,7 +122,7 @@ namespace CMR_System {
 			this->loginBtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->loginBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->loginBtn->ForeColor = System::Drawing::Color::Transparent;
-			this->loginBtn->Location = System::Drawing::Point(113, 316);
+			this->loginBtn->Location = System::Drawing::Point(113, 331);
 			this->loginBtn->Name = L"loginBtn";
 			this->loginBtn->Size = System::Drawing::Size(91, 32);
 			this->loginBtn->TabIndex = 0;
@@ -126,7 +130,6 @@ namespace CMR_System {
 			this->loginBtn->TextImageRelation = System::Windows::Forms::TextImageRelation::TextBeforeImage;
 			this->loginBtn->UseMnemonic = false;
 			this->loginBtn->UseVisualStyleBackColor = false;
-			this->loginBtn->Visible = false;
 			this->loginBtn->Click += gcnew System::EventHandler(this, &Login_Form::loginBtn_Click);
 			// 
 			// label1
@@ -154,21 +157,49 @@ namespace CMR_System {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label3->ForeColor = System::Drawing::Color::Red;
-			this->label3->Location = System::Drawing::Point(73, 285);
+			this->label3->Location = System::Drawing::Point(73, 301);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(186, 16);
+			this->label3->Size = System::Drawing::Size(216, 16);
 			this->label3->TabIndex = 5;
 			this->label3->Text = L"Login or Password is incorrect";
 			this->label3->Visible = false;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label4->ForeColor = System::Drawing::Color::Red;
+			this->label4->Location = System::Drawing::Point(113, 187);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(137, 13);
+			this->label4->TabIndex = 6;
+			this->label4->Text = L"Login canno\'t be blank";
+			this->label4->Visible = false;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label5->ForeColor = System::Drawing::Color::Red;
+			this->label5->Location = System::Drawing::Point(108, 275);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(160, 13);
+			this->label5->TabIndex = 7;
+			this->label5->Text = L"Password canno\'t be blank";
+			this->label5->Visible = false;
 			// 
 			// Login_Form
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(346, 395);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
@@ -205,34 +236,40 @@ namespace CMR_System {
 		char* username = and_SysStringToChar(username_input);
 		char* password = and_SysStringToChar(password_input);
 
-		readFile.open("login.txt", ios::app);
-		if (!readFile) {
-			MessageBox::Show("Cannot open file!");
+		//if username input is empty
+		if (strlen(username) == 0) {
+			this->label4->Visible = true;
+		}
+		if (strlen(password) == 0) {
+			this->label5->Visible = true;
 		}
 		else {
-			readFile.seekg(0, ios::end);
-			int size = readFile.tellg();
-			int userCount = size / sizeof(Login);
 
-			readFile.seekg(0, ios::beg);
-			Login *login_struct = new Login[userCount];
-			readFile.read((char*)login_struct, userCount * sizeof(Login));
+			readFile.open("login.data", ios::binary);
+			if (!readFile) {
+				MessageBox::Show("Cannot open file!");
+			}
+			else {
+				readFile.seekg(0, ios::end);
+				int size = readFile.tellg();
+				int userCount = size / sizeof(Login);
 
-			//Check if user and password is valid
-			for (int i = 0; i < userCount; i++) {
-				if (login_struct[i].username == username && login_struct[i].password == password) {
-					
+				readFile.seekg(0, ios::beg);
+				Login *login_struct = new Login[userCount];
+				readFile.read((char*)login_struct, userCount * sizeof(Login));
+
+				//Check if user and password is valid
+				if (strcmp(login_struct[0].username, username) == 0 && strcmp(login_struct[1].password,password)== 0) {
+						MessageBox::Show("Correct");
 				}
 				else {
-					this->label3->Visible = true;
+						this->label3->Visible = true;
 				}
+				
+
 			}
 
-
-		}
-
-
-
-	}
+		}//end of if
+	}//end of func
 };
 }
