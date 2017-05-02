@@ -1,8 +1,9 @@
 #pragma once
+//#include "Headers.h"
 
 #include "Customer_Form.h"
 #include "Customer_List.h"
-#include "Login_Form.h"
+
 
 namespace CMR_System {
 
@@ -52,6 +53,7 @@ namespace CMR_System {
 	private: System::Windows::Forms::ToolStripMenuItem^  exitToolStripMenuItem1;
 	private: System::Windows::Forms::ToolStripMenuItem^  exitToolStripMenuItem;
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
+	private: System::Windows::Forms::Label^  label2;
 
 
 
@@ -88,6 +90,7 @@ namespace CMR_System {
 			this->exitToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->exitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -201,6 +204,17 @@ namespace CMR_System {
 			this->pictureBox1->TabIndex = 12;
 			this->pictureBox1->TabStop = false;
 			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label2->Location = System::Drawing::Point(601, 45);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(81, 16);
+			this->label2->TabIndex = 13;
+			this->label2->Text = L"Welcome, ";
+			// 
 			// MainWindow
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -208,6 +222,7 @@ namespace CMR_System {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
 				static_cast<System::Int32>(static_cast<System::Byte>(224)));
 			this->ClientSize = System::Drawing::Size(784, 562);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->wlcMsg);

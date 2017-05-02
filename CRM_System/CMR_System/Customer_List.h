@@ -1,6 +1,7 @@
 #pragma once
 
 #include <fstream>
+#include "Customer_Form.h"
 
 namespace CMR_System {
 
@@ -51,6 +52,7 @@ namespace CMR_System {
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
+		
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Customer_List::typeid));
@@ -59,11 +61,13 @@ namespace CMR_System {
 			// 
 			// list_body
 			// 
+			
 			this->list_body->BackColor = System::Drawing::Color::White;
 			this->list_body->Location = System::Drawing::Point(29, 9);
 			this->list_body->Name = L"list_body";
 			this->list_body->Size = System::Drawing::Size(631, 613);
 			this->list_body->TabIndex = 0;
+			
 			
 			// 
 			// Customer_List
@@ -90,14 +94,21 @@ namespace CMR_System {
 	//On form load, appear content from file
 	private: System::Void Customer_List_Load(System::Object^  sender, System::EventArgs^  e) {
 		
-		/*
+		
 		ifstream readFile;
-		readFile.open("mystring.data");
+		readFile.open("mystring.data", ios::binary);
 		if (!readFile) {
 			MessageBox::Show("Couldn't open file!");
 			
 		}
 		else {
+			//Char to String^
+			/*
+			char getName[25] = "Name";
+			String^ msg = gcnew String(reinterpret_cast<const char*>(getName));
+			this->list_body->Text = msg;
+			*/
+
 			readFile.seekg(0, ios::end);
 			int size = readFile.tellg();
 			int count = size / sizeof(Customer_Struct);
@@ -105,15 +116,18 @@ namespace CMR_System {
 			Customer_Struct *customer_struct = new Customer_Struct[count];
 			readFile.read((char*)customer_struct, count * sizeof(Customer_Struct));
 			
+
 			for (int i = 0; i < count; i++)
 			{
-				//this->list_body->Text = L"Hello";
+				
+				//customer_info[i].customerName;
+
 
 			}
 			
 			readFile.close();
 		}
-		*/
+		
 	}
 
 

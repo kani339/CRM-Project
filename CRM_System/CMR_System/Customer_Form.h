@@ -1,8 +1,9 @@
 #pragma once
 
 #include <fstream>
-#include <iostream>
 
+//#include "Headers.h"
+//#include "MainWindow.h"
 
 
 struct Customer_Struct {
@@ -11,7 +12,7 @@ struct Customer_Struct {
 	char customerSurname[50];
 	char customerPhone[50];
 	char customerNotes[250];
-	char webSiteLink[100];
+	char customerEmail[30];
 
 };
 
@@ -36,6 +37,7 @@ namespace CMR_System {
 	/// </summary>
 	public ref class Customer_Form : public System::Windows::Forms::Form
 	{
+
 	public:
 		Customer_Form(void)
 		{
@@ -293,26 +295,30 @@ namespace CMR_System {
 			*/
 
 
-			char* customerName = and_SysStringToChar(s_nameInp);
-			char* customerSurname = and_SysStringToChar(s_surnameInp);
-			char* customerPhone = and_SysStringToChar(phone_inp);
-			char* customerNotes = and_SysStringToChar(note_inp);
-			char* customerEmail = and_SysStringToChar(email_inp);
+			char* customerName_1 = and_SysStringToChar(s_nameInp);
+			char* customerSurname_1 = and_SysStringToChar(s_surnameInp);
+			char* customerPhone_1 = and_SysStringToChar(phone_inp);
+			char* customerNotes_1 = and_SysStringToChar(note_inp);
+			char* customerEmail_1 = and_SysStringToChar(email_inp);
 
-			customer_info.customerName;
-			customer_info.customerSurname;
+			strcpy_s(customer_info.customerName, customerName_1);
+			strcpy_s(customer_info.customerSurname, customerSurname_1);
+			strcpy_s(customer_info.customerPhone, customerPhone_1);
+			strcpy_s(customer_info.customerNotes, customerNotes_1);
+			strcpy_s(customer_info.customerEmail, customerEmail_1);
 
 			//Validate customer name
-			for (int i = 0; i < strlen(customerName); i++)
+			/*
+			for (int i = 0; i < strlen(customerName_1); i++)
 			{
-				if (islower(customerName[0])) {
+				if (islower(customerName_1[0])) {
 					customerName[0] = toupper(customerName[0]);
 				}
 				else {
 					customerName[i + 1] = tolower(customerName[i + 1]);
 				}
 			}
-
+			
 			//Validate phone number
 			for (int i = 0; i < strlen(customerPhone); i++)
 			{
@@ -333,30 +339,33 @@ namespace CMR_System {
 					customerSurname[i + 1] = tolower(customerSurname[i + 1]);
 				}
 
-
+			}
+			*/
 				//Save Data
-				fileCreate.open("mystring.data", ios::app);
+				fileCreate.open("mystring.data", ios::binary | ios::app);
 
 				if (!fileCreate) {
 					MessageBox::Show("Couldn't create a file");
 				}
 				else {
+					
+
 					/*
 					fileCreate << customerName << endl;
 					fileCreate << customerSurname << endl;
 					fileCreate << customerPhone << endl;
 					fileCreate << customerEmail << endl;
 					fileCreate << customerNotes << endl;
-
 					*/
-					//fileCreate.write((char*)customer_info,sizeof(Customer_Struct));
+					
+					fileCreate.write((char*)&customer_info,sizeof(Customer_Struct));
 					fileCreate.close();
 
 				}
 
 				//Show text when data saved
 				this->label2->Visible = true;
-			}
+			
 			
 			
 			//Empty Fields after clicked save button
@@ -372,7 +381,9 @@ namespace CMR_System {
 
 	//if closing customer form, display main form
 	private: System::Void Customer_Form_FormClosing(System::Object^  sender, System::Windows::Forms::FormClosingEventArgs^  e) {
-		//MainWindow::Form->Show();
+		this->Hide();
+		//MainWindow^ new_win = gcnew MainWindow();
+		//new_win->Show();
 		
 	}
 };

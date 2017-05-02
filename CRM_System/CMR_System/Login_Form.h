@@ -3,6 +3,8 @@
 
 
 #include <fstream>
+#include "MainWindow.h"
+
 
 
 struct Login {
@@ -245,22 +247,20 @@ namespace CMR_System {
 		}
 		else {
 
-			readFile.open("login.data", ios::binary);
+			readFile.open("login.data");
 			if (!readFile) {
 				MessageBox::Show("Cannot open file!");
 			}
 			else {
-				readFile.seekg(0, ios::end);
-				int size = readFile.tellg();
-				int userCount = size / sizeof(Login);
-
-				readFile.seekg(0, ios::beg);
-				Login *login_struct = new Login[userCount];
-				readFile.read((char*)login_struct, userCount * sizeof(Login));
-
+				Login login_struct;
+				readFile >> login_struct.username;
+				readFile >> login_struct.password;
 				//Check if user and password is valid
-				if (strcmp(login_struct[0].username, username) == 0 && strcmp(login_struct[1].password,password)== 0) {
-						MessageBox::Show("Correct");
+				if (strcmp(login_struct.username, username) == 0 && strcmp(login_struct.password,password)== 0) {
+						MainWindow^ main_win = gcnew MainWindow();
+						main_win->Show();
+						this->Hide();
+						
 				}
 				else {
 						this->label3->Visible = true;
