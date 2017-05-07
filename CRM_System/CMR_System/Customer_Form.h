@@ -1,7 +1,15 @@
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable : 4996)
+#endif
+
+
 #pragma once
 
 #include <fstream>
-
+#include <regex>
+#include <iomanip>
+#include <chrono> 
 //#include "Headers.h"
 //#include "MainWindow.h"
 
@@ -21,6 +29,7 @@ struct Customer_Struct {
 namespace CMR_System {
 
 	using namespace std;
+	using chrono::system_clock;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -75,6 +84,11 @@ namespace CMR_System {
 
 
 	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::Label^  label5;
+	private: System::Windows::Forms::Label^  label6;
+	private: System::Windows::Forms::Label^  label7;
 
 	private: System::ComponentModel::IContainer^  components;
 
@@ -108,6 +122,11 @@ namespace CMR_System {
 			this->emailLabel = (gcnew System::Windows::Forms::Label());
 			this->email_input = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -238,11 +257,81 @@ namespace CMR_System {
 			this->label2->Text = L"Succesfully Added";
 			this->label2->Visible = false;
 			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label3->ForeColor = System::Drawing::Color::Red;
+			this->label3->Location = System::Drawing::Point(150, 128);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(81, 13);
+			this->label3->TabIndex = 13;
+			this->label3->Text = L"Invalid Name";
+			this->label3->Visible = false;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label4->ForeColor = System::Drawing::Color::Red;
+			this->label4->Location = System::Drawing::Point(150, 190);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(98, 13);
+			this->label4->TabIndex = 14;
+			this->label4->Text = L"Invalid Surname";
+			this->label4->Visible = false;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label5->ForeColor = System::Drawing::Color::Red;
+			this->label5->Location = System::Drawing::Point(149, 250);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(127, 13);
+			this->label5->TabIndex = 15;
+			this->label5->Text = L"Invalid Phone Format";
+			this->label5->Visible = false;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label6->ForeColor = System::Drawing::Color::Red;
+			this->label6->Location = System::Drawing::Point(147, 301);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(121, 13);
+			this->label6->TabIndex = 16;
+			this->label6->Text = L"Invalid Email Format";
+			this->label6->Visible = false;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label7->ForeColor = System::Drawing::Color::Red;
+			this->label7->Location = System::Drawing::Point(137, 484);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(117, 13);
+			this->label7->TabIndex = 17;
+			this->label7->Text = L"Please fill all inputs";
+			this->label7->Visible = false;
+			// 
 			// Customer_Form
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(454, 540);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->email_input);
 			this->Controls->Add(this->emailLabel);
@@ -280,21 +369,14 @@ namespace CMR_System {
 			Customer_Struct customer_info;
 			ofstream fileCreate;
 
+			bool validated = true;
 
 			String^ s_nameInp = nameInput->Text;
 			String^ s_surnameInp = surnameInput->Text;
 			String^ phone_inp = phoneInput->Text;
 			String^ note_inp = noteInput->Text;
 			String^ email_inp = email_input->Text;
-
-			//Check if fields are not empty 
-			/*
-			if (s_nameInp = " ") {
-				MessageBox::Show("Name Input cannot be blank");
-			}
-			*/
-
-
+			
 			char* customerName_1 = and_SysStringToChar(s_nameInp);
 			char* customerSurname_1 = and_SysStringToChar(s_surnameInp);
 			char* customerPhone_1 = and_SysStringToChar(phone_inp);
@@ -307,40 +389,74 @@ namespace CMR_System {
 			strcpy_s(customer_info.customerNotes, customerNotes_1);
 			strcpy_s(customer_info.customerEmail, customerEmail_1);
 
+			//Check if fields are not empty 
+			if (this->nameInput->Text->Length == 0 || this->surnameInput->Text->Length == 0 || this->phoneInput->Text->Length == 0 || this->noteInput->Text->Length == 0 || this->email_input->Text->Length == 0)
+			{
+				this->label7->Visible = true;
+				validated = false;
+			} else {
+				this->label7->Visible = false;
 			//Validate customer name
-			/*
 			for (int i = 0; i < strlen(customerName_1); i++)
 			{
+				//Check if name contains only letters
+				if (isalpha(customerName_1[i])==0)
+				{
+					this->label3->Visible = true;
+					validated = false;
+					break;
+					
+				}
+				else { this->label3->Visible = false; }
+
 				if (islower(customerName_1[0])) {
-					customerName[0] = toupper(customerName[0]);
+					customerName_1[0] = toupper(customerName_1[0]);
 				}
 				else {
-					customerName[i + 1] = tolower(customerName[i + 1]);
+					customerName_1[i + 1] = tolower(customerName_1[i + 1]);
 				}
-			}
-			
-			//Validate phone number
-			for (int i = 0; i < strlen(customerPhone); i++)
-			{
-				if (!isdigit(customerPhone[i])) {
-					MessageBox::Show("Only Digits are allowed");
+
+				//Validate customer surname
+				if (isalpha(customerSurname_1[i]) == 0)
+				{
+					this->label4->Visible = true;
+					validated = false;
 					break;
 				}
-			}
-			
+				else { this->label4->Visible = false; }
 
-			//Validate customer surname
-			for (int i = 0; i < strlen(customerSurname); i++)
-			{
-				if (islower(customerSurname[0])) {
-					customerSurname[0] = toupper(customerSurname[0]);
+
+				if (islower(customerSurname_1[0])) {
+					customerSurname_1[0] = toupper(customerSurname_1[0]);
 				}
 				else {
-					customerSurname[i + 1] = tolower(customerSurname[i + 1]);
+					customerSurname_1[i + 1] = tolower(customerSurname_1[i + 1]);
 				}
 
+				//Validate phone number
+				if (!isdigit(customerPhone_1[i])) {
+					this->label5->Visible = true;
+					validated = false;
+					break;
+				}
+				else { this->label5->Visible = false; }
+
+				//Validate email
+				regex reg("([\\w_]+)(@)([\\w]+)(\.)([a-z]{2,5})");
+				if (!(regex_match(customerEmail_1, reg)))
+				{
+					this->label6->Visible = true;
+					validated = false;
+					break;
+				}
+				else { this->label6->Visible = false; }
 			}
-			*/
+
+			}
+
+			//If no error occured save to file
+			if (validated)
+			{
 				//Save Data
 				fileCreate.open("mystring.data", ios::binary | ios::app);
 
@@ -348,35 +464,23 @@ namespace CMR_System {
 					MessageBox::Show("Couldn't create a file");
 				}
 				else {
-					
 
-					/*
-					fileCreate << customerName << endl;
-					fileCreate << customerSurname << endl;
-					fileCreate << customerPhone << endl;
-					fileCreate << customerEmail << endl;
-					fileCreate << customerNotes << endl;
-					*/
-					
-					fileCreate.write((char*)&customer_info,sizeof(Customer_Struct));
+					fileCreate.write((char*)&customer_info, sizeof(Customer_Struct));
 					fileCreate.close();
-
 				}
 
 				//Show text when data saved
 				this->label2->Visible = true;
-			
-			
-			
-			//Empty Fields after clicked save button
-			nameInput->Text = "";
-			surnameInput->Text = "";
-			phoneInput->Text = "";
-			noteInput->Text = "";
-			email_input->Text = "";
 
-
-			
+				//Empty Fields after clicked save button
+				nameInput->Text = "";
+				surnameInput->Text = "";
+				phoneInput->Text = "";
+				noteInput->Text = "";
+				email_input->Text = "";
+				
+			}
+						
 	}
 
 	//if closing customer form, display main form

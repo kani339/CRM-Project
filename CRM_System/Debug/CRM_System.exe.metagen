@@ -1,3 +1,4 @@
+  CMR_System.Coworkers.resources - Embedded, ContainedInManifestFile, 
   CMR_System.Customer_Form.resources - Embedded, ContainedInManifestFile, 
   CMR_System.Customer_List.resources - Embedded, ContainedInManifestFile, 
   CMR_System.Login_Form.resources - Embedded, ContainedInManifestFile, 
@@ -19,6 +20,9 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Class CMR_System.Coworkers: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CMR_System.Customer_Form: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -31,3 +35,5 @@ Class CMR_System.MainWindow: AutoLayout, AnsiClass, Class, Public, BeforeFieldIn
 Class CMR_System.Login_Form: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    loginBtn_Click(Object, EventArgs): PrivateScope, Public, HideBySig

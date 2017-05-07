@@ -1,7 +1,6 @@
 #pragma once
 
 
-
 #include <fstream>
 #include "MainWindow.h"
 
@@ -11,6 +10,8 @@ struct Login {
 	char username[90];
 	char password[90];
 };
+
+
 
 namespace CMR_System {
 
@@ -227,7 +228,7 @@ namespace CMR_System {
 		}
 
 	//Login 	
-	private: System::Void loginBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+	public: System::Void loginBtn_Click(System::Object^  sender, System::EventArgs^  e) {
 
 		ifstream readFile;
 		Login login_struct;

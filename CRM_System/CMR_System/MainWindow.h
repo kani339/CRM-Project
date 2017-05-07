@@ -3,10 +3,16 @@
 
 #include "Customer_Form.h"
 #include "Customer_List.h"
+#include "Coworkers.h"
+
+#include <ctime>
+#include <iomanip>
+#include <chrono> 
 
 
 namespace CMR_System {
 
+	using chrono::system_clock;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -54,6 +60,8 @@ namespace CMR_System {
 	private: System::Windows::Forms::ToolStripMenuItem^  exitToolStripMenuItem;
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
 	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Button^  button1;
 
 
 
@@ -91,6 +99,8 @@ namespace CMR_System {
 			this->exitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -104,7 +114,7 @@ namespace CMR_System {
 			this->addCustomer_btn->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->addCustomer_btn->ForeColor = System::Drawing::Color::White;
-			this->addCustomer_btn->Location = System::Drawing::Point(174, 45);
+			this->addCustomer_btn->Location = System::Drawing::Point(291, 45);
 			this->addCustomer_btn->Name = L"addCustomer_btn";
 			this->addCustomer_btn->Size = System::Drawing::Size(122, 29);
 			this->addCustomer_btn->TabIndex = 6;
@@ -121,7 +131,7 @@ namespace CMR_System {
 			this->customerList_btn->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->customerList_btn->ForeColor = System::Drawing::Color::White;
-			this->customerList_btn->Location = System::Drawing::Point(302, 45);
+			this->customerList_btn->Location = System::Drawing::Point(419, 45);
 			this->customerList_btn->Name = L"customerList_btn";
 			this->customerList_btn->Size = System::Drawing::Size(122, 29);
 			this->customerList_btn->TabIndex = 6;
@@ -133,7 +143,7 @@ namespace CMR_System {
 			// 
 			this->infoBlock->AutoSize = true;
 			this->infoBlock->BackColor = System::Drawing::Color::White;
-			this->infoBlock->Location = System::Drawing::Point(164, 122);
+			this->infoBlock->Location = System::Drawing::Point(160, 121);
 			this->infoBlock->Name = L"infoBlock";
 			this->infoBlock->Padding = System::Windows::Forms::Padding(390, 120, 185, 255);
 			this->infoBlock->Size = System::Drawing::Size(575, 388);
@@ -145,7 +155,7 @@ namespace CMR_System {
 			this->wlcMsg->BackColor = System::Drawing::Color::White;
 			this->wlcMsg->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->wlcMsg->Location = System::Drawing::Point(170, 138);
+			this->wlcMsg->Location = System::Drawing::Point(170, 147);
 			this->wlcMsg->Name = L"wlcMsg";
 			this->wlcMsg->Size = System::Drawing::Size(565, 48);
 			this->wlcMsg->TabIndex = 9;
@@ -209,11 +219,35 @@ namespace CMR_System {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(601, 45);
+			this->label2->Location = System::Drawing::Point(654, 45);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(81, 16);
 			this->label2->TabIndex = 13;
 			this->label2->Text = L"Welcome, ";
+			// 
+			// label3
+			// 
+			this->label3->Location = System::Drawing::Point(0, 0);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(100, 23);
+			this->label3->TabIndex = 0;
+			// 
+			// button1
+			// 
+			this->button1->AllowDrop = true;
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Impact", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button1->ForeColor = System::Drawing::Color::White;
+			this->button1->Location = System::Drawing::Point(163, 45);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(122, 29);
+			this->button1->TabIndex = 14;
+			this->button1->Text = L"Add Co-worker";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &MainWindow::button1_Click);
 			// 
 			// MainWindow
 			// 
@@ -222,6 +256,8 @@ namespace CMR_System {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
 				static_cast<System::Int32>(static_cast<System::Byte>(224)));
 			this->ClientSize = System::Drawing::Size(784, 562);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
@@ -276,7 +312,13 @@ namespace CMR_System {
 	
 
 
-	
+	//Co-worker button	
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		Coworkers^ coworker = gcnew Coworkers();
+		coworker->Show();
+		this->Hide();
+	}
+
 
 };
 }

@@ -3,6 +3,9 @@
 #include <fstream>
 #include "Customer_Form.h"
 
+
+
+
 namespace CMR_System {
 
 	using namespace std;
@@ -102,12 +105,7 @@ namespace CMR_System {
 			
 		}
 		else {
-			//Char to String^
-			/*
-			char getName[25] = "Name";
-			String^ msg = gcnew String(reinterpret_cast<const char*>(getName));
-			this->list_body->Text = msg;
-			*/
+			
 
 			readFile.seekg(0, ios::end);
 			int size = readFile.tellg();
@@ -120,7 +118,13 @@ namespace CMR_System {
 			for (int i = 0; i < count; i++)
 			{
 				
-				//customer_info[i].customerName;
+				//Char to String^
+				
+				//char getName[25] = "Name";
+				//customer_struct.customerName[i]
+				//String^ msg = gcnew String(reinterpret_cast<const char*>(getName));
+				//this->list_body->Text = msg;
+				
 
 
 			}
