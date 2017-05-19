@@ -3,6 +3,7 @@
   CMR_System.Customer_List.resources - Embedded, ContainedInManifestFile, 
   CMR_System.Login_Form.resources - Embedded, ContainedInManifestFile, 
   CMR_System.MainWindow.resources - Embedded, ContainedInManifestFile, 
+  CMR_System.Worker_List.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly CRM_System, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=SHA1, flags=PublicKey
@@ -29,9 +30,18 @@ Class CMR_System.Customer_Form: AutoLayout, AnsiClass, Class, Public, BeforeFiel
 Class CMR_System.Customer_List: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class CMR_System.MainWindow: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+Class CMR_System.Worker_List: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String worker_salary : Public
+Class CMR_System.MainWindow: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String userName : Public
+    System.String workerSalary : Public
 Class CMR_System.Login_Form: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

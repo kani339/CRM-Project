@@ -1,14 +1,13 @@
 #pragma once
 
-
-#include <fstream>
+#include "Headers.h"
 #include "MainWindow.h"
-
 
 
 struct Login {
 	char username[90];
 	char password[90];
+	bool rememberMe;
 };
 
 
@@ -29,13 +28,12 @@ namespace CMR_System {
 	/// </summary>
 	public ref class Login_Form : public System::Windows::Forms::Form
 	{
+		
 	public:
 		Login_Form(void)
 		{
 			InitializeComponent();
 			//Mask password with stars
-			
-
 			//
 			//TODO: Add the constructor code here
 			//
@@ -213,7 +211,6 @@ namespace CMR_System {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"Login_Form";
-			this->ShowIcon = false;
 			this->Text = L"Login";
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -229,8 +226,25 @@ namespace CMR_System {
 
 	//Login 	
 	public: System::Void loginBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+		/*
+		time_t tt = chrono::system_clock::to_time_t(chrono::system_clock::now());
+		struct tm * ptm = localtime(&tt);
+		int currentHours = ptm->tm_hour;
+		int currentMins = ptm->tm_min+30;
 
-		ifstream readFile;
+		int remaindMin;
+
+		if (currentMins >= 60)
+		{
+			currentHours += 1;
+			remaindMin = currentMins - 60;
+			cout << "Current time: " << currentHours << ":" << remaindMin;
+		}
+		else {
+			cout << "Current time: " << currentHours << ":" << currentMins;
+		}
+		*/
+
 		Login login_struct;
 
 		String^ username_input = usernameInp->Text;
@@ -247,29 +261,31 @@ namespace CMR_System {
 			this->label5->Visible = true;
 		}
 		else {
-
-			readFile.open("login.data");
+			ifstream readFile;
+			readFile.open("login.txt");
 			if (!readFile) {
 				MessageBox::Show("Cannot open file!");
 			}
+			
 			else {
-				Login login_struct;
+
 				readFile >> login_struct.username;
 				readFile >> login_struct.password;
-				//Check if user and password is valid
-				if (strcmp(login_struct.username, username) == 0 && strcmp(login_struct.password,password)== 0) {
-						MainWindow^ main_win = gcnew MainWindow();
-						main_win->Show();
-						this->Hide();
-						
-				}
-				else {
-						this->label3->Visible = true;
+				//readFile >> login_struct.rememberMe;
+
+				if (strcmp(login_struct.username, username) == 0 && strcmp(login_struct.password, password) == 0) 
+				{	
+					MainWindow^ main_win = gcnew MainWindow(username_input);
+					
+					
+					main_win->Show();
+					this->Hide();
 				}
 				
-
+				else {
+					this->label3->Visible = true;
+				}
 			}
-
 		}//end of if
 	}//end of func
 };

@@ -30,6 +30,12 @@
     <ClCompile Include="Coworkers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Worker_List.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Headers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainWindow.h">
@@ -50,6 +56,9 @@
     <ClInclude Include="Coworkers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Worker_List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainWindow.resx">
@@ -62,6 +71,12 @@
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="Login_Form.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Coworkers.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Worker_List.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>

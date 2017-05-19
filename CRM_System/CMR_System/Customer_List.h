@@ -1,9 +1,8 @@
 #pragma once
 
-#include <fstream>
+
 #include "Customer_Form.h"
-
-
+#include "Headers.h"
 
 
 namespace CMR_System {
@@ -15,7 +14,7 @@ namespace CMR_System {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
+	using namespace System::Runtime::InteropServices;
 	/// <summary>
 	/// Summary for Customer_List
 	/// </summary>
@@ -41,7 +40,24 @@ namespace CMR_System {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^  list_body;
+
+	protected:
+	private: System::Windows::Forms::Label^  label1;
+
+	private: System::Windows::Forms::DataGridView^  dataGridView1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Surname;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column5;
+	private: System::Windows::Forms::Button^  deleteBtn;
+	private: System::Windows::Forms::TextBox^  deleteInp;
+	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::Button^  btnDelete;
+
+
+
+
 	protected:
 
 	private:
@@ -59,81 +75,244 @@ namespace CMR_System {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Customer_List::typeid));
-			this->list_body = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Surname = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->deleteBtn = (gcnew System::Windows::Forms::Button());
+			this->deleteInp = (gcnew System::Windows::Forms::TextBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->btnDelete = (gcnew System::Windows::Forms::Button());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// list_body
+			// label1
 			// 
-			
-			this->list_body->BackColor = System::Drawing::Color::White;
-			this->list_body->Location = System::Drawing::Point(29, 9);
-			this->list_body->Name = L"list_body";
-			this->list_body->Size = System::Drawing::Size(631, 613);
-			this->list_body->TabIndex = 0;
-			
-			
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label1->Location = System::Drawing::Point(248, 21);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(173, 24);
+			this->label1->TabIndex = 1;
+			this->label1->Text = L"List Of Customers";
+			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+				this->Column1,
+					this->Surname, this->Column3, this->Column4, this->Column5
+			});
+			this->dataGridView1->Location = System::Drawing::Point(74, 89);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->Size = System::Drawing::Size(546, 381);
+			this->dataGridView1->TabIndex = 3;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Name";
+			this->Column1->Name = L"Column1";
+			// 
+			// Surname
+			// 
+			this->Surname->HeaderText = L"Surname";
+			this->Surname->Name = L"Surname";
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Phone";
+			this->Column3->Name = L"Column3";
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Email";
+			this->Column4->Name = L"Column4";
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"Notes";
+			this->Column5->Name = L"Column5";
+			// 
+			// deleteBtn
+			// 
+			this->deleteBtn->Location = System::Drawing::Point(92, 513);
+			this->deleteBtn->Name = L"deleteBtn";
+			this->deleteBtn->Size = System::Drawing::Size(100, 33);
+			this->deleteBtn->TabIndex = 4;
+			this->deleteBtn->Text = L"Delete By Name";
+			this->deleteBtn->UseVisualStyleBackColor = true;
+			this->deleteBtn->Click += gcnew System::EventHandler(this, &Customer_List::deleteBtn_Click);
+			// 
+			// deleteInp
+			// 
+			this->deleteInp->Location = System::Drawing::Point(186, 574);
+			this->deleteInp->Name = L"deleteInp";
+			this->deleteInp->Size = System::Drawing::Size(100, 20);
+			this->deleteInp->TabIndex = 5;
+			this->deleteInp->Visible = false;
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label2->Location = System::Drawing::Point(92, 574);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(93, 16);
+			this->label2->TabIndex = 6;
+			this->label2->Text = L"Enter Name:";
+			this->label2->Visible = false;
+			// 
+			// btnDelete
+			// 
+			this->btnDelete->Location = System::Drawing::Point(304, 570);
+			this->btnDelete->Name = L"btnDelete";
+			this->btnDelete->Size = System::Drawing::Size(75, 23);
+			this->btnDelete->TabIndex = 7;
+			this->btnDelete->Text = L"Delete";
+			this->btnDelete->UseVisualStyleBackColor = true;
+			this->btnDelete->Visible = false;
+			this->btnDelete->Click += gcnew System::EventHandler(this, &Customer_List::btnDelete_Click_1);
 			// 
 			// Customer_List
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(684, 762);
-			this->Controls->Add(this->list_body);
+			this->ClientSize = System::Drawing::Size(684, 632);
+			this->Controls->Add(this->btnDelete);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->deleteInp);
+			this->Controls->Add(this->deleteBtn);
+			this->Controls->Add(this->dataGridView1);
+			this->Controls->Add(this->label1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"Customer_List";
 			this->Text = L"Customer List";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &Customer_List::Customer_List_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &Customer_List::Customer_List_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 
-
+		//Convert String to char array
+		char * and_SysStringToChar(System::String^ string)
+		{
+			return (char*)(void*)Marshal::StringToHGlobalAnsi(string);
+		}
 
 
 #pragma endregion
 		
-	
+void sort()
+{
+			int customerCount;
+			
+			Customer_Struct *customer_struct = fileOutput(&customerCount);
+			Customer_Struct sortCustomer;
+
+			for (int i = 0; i < customerCount; i++)
+			{
+				//Sort by alphabet
+				for (int j = customerCount - 1; j > 0; j--)
+				{
+					if (strcmp(customer_struct[j].customerName, customer_struct[j - 1].customerName)<0)
+					{
+						sortCustomer = customer_struct[j - 1];
+						customer_struct[j - 1] = customer_struct[j];
+						customer_struct[j] = sortCustomer;
+					}
+				}
+
+				//Char to String^
+				String^ output_c_1 = gcnew String(reinterpret_cast<const char*>(customer_struct[i].customerName));
+				String^ output_c_2 = gcnew String(reinterpret_cast<const char*>(customer_struct[i].customerSurname));
+				String^ output_c_3 = gcnew String(reinterpret_cast<const char*>(customer_struct[i].customerPhone));
+				String^ output_c_4 = gcnew String(reinterpret_cast<const char*>(customer_struct[i].customerEmail));
+				String^ output_c_5 = gcnew String(reinterpret_cast<const char*>(customer_struct[i].customerNotes));
+				dataGridView1->Rows->Add(output_c_1, output_c_2, output_c_3, output_c_4, output_c_5);
+
+	}		
+}
+
+
 	//On form load, appear content from file
 	private: System::Void Customer_List_Load(System::Object^  sender, System::EventArgs^  e) {
 		
-		
-		ifstream readFile;
-		readFile.open("mystring.data", ios::binary);
-		if (!readFile) {
-			MessageBox::Show("Couldn't open file!");
-			
-		}
-		else {
-			
-
-			readFile.seekg(0, ios::end);
-			int size = readFile.tellg();
-			int count = size / sizeof(Customer_Struct);
-			readFile.seekg(0, ios::beg);
-			Customer_Struct *customer_struct = new Customer_Struct[count];
-			readFile.read((char*)customer_struct, count * sizeof(Customer_Struct));
-			
-
-			for (int i = 0; i < count; i++)
-			{
-				
-				//Char to String^
-				
-				//char getName[25] = "Name";
-				//customer_struct.customerName[i]
-				//String^ msg = gcnew String(reinterpret_cast<const char*>(getName));
-				//this->list_body->Text = msg;
-				
-
-
-			}
-			
-			readFile.close();
-		}
-		
+			int customerCount;
+			Customer_Struct *customer_struct = fileOutput(&customerCount);
+			sort();
 	}
 
 
-	};
+			
+	//Show delete input
+	private: System::Void deleteBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+
+		this->label2->Visible = true;
+		this->btnDelete->Visible = true;
+		this->deleteInp->Visible = true;
+	}
+	
+	//Delete By Name
+	private: System::Void btnDelete_Click_1(System::Object^  sender, System::EventArgs^  e) {
+	
+		String^ delInp = deleteInp->Text;
+		char del_inp[90];
+		char* inp = and_SysStringToChar(delInp);
+		strcpy_s(del_inp, inp);
+
+			int customerCount;
+
+			Customer_Struct *customer_struct = fileOutput(&customerCount);
+
+			ofstream file;
+			file.open("mystring.data", ios::binary | ios::out);
+			if (!file)
+			{
+				MessageBox::Show("Couldn't open file!");
+			}
+			else {
+				for (int i = 0; i < customerCount; i++) {
+					if (strcmp(del_inp, customer_struct[i].customerName) != 0)
+					{
+						file.write((char*)&customer_struct[i], sizeof(Customer_Struct));
+					}
+				}
+				file.close();
+			}
+			dataGridView1->Rows->Clear();
+			sort();
+
+			
+			
+
+			/*
+			int customerCount;
+			Customer_Struct *customer_struct = fileOutput(&customerCount);
+			String^ output_c_1 = gcnew String(reinterpret_cast<const char*>(customer_struct[i].customerName));
+			String^ output_c_2 = gcnew String(reinterpret_cast<const char*>(customer_struct[i].customerSurname));
+			String^ output_c_3 = gcnew String(reinterpret_cast<const char*>(customer_struct[i].customerPhone));
+			String^ output_c_4 = gcnew String(reinterpret_cast<const char*>(customer_struct[i].customerEmail));
+			String^ output_c_5 = gcnew String(reinterpret_cast<const char*>(customer_struct[i].customerNotes));
+			
+			dataGridView1->Rows->Add(output_c_1, output_c_2, output_c_3, output_c_4, output_c_5);
+			*/
+		}
+	//}
+
+	//Closing window
+	private: System::Void Customer_List_FormClosing(System::Object^  sender, System::Windows::Forms::FormClosingEventArgs^  e) {
+		this->Hide();
+		this->Owner->Show();
+	}
+
+};
 }

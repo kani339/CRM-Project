@@ -10,19 +10,19 @@
 #include <regex>
 #include <iomanip>
 #include <chrono> 
-//#include "Headers.h"
-//#include "MainWindow.h"
+#include "Headers.h"
 
 
+/*
 struct Customer_Struct {
-	
 	char customerName[50];
 	char customerSurname[50];
 	char customerPhone[50];
 	char customerNotes[250];
 	char customerEmail[30];
-
 };
+
+*/
 
 
 
@@ -46,14 +46,16 @@ namespace CMR_System {
 	/// </summary>
 	public ref class Customer_Form : public System::Windows::Forms::Form
 	{
-
+		
 	public:
 		Customer_Form(void)
 		{
+			
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
+
 		}
 
 	protected:
@@ -350,6 +352,7 @@ namespace CMR_System {
 			this->Name = L"Customer_Form";
 			this->Text = L"Customer_Form";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &Customer_Form::Customer_Form_FormClosing);
+			
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -383,11 +386,14 @@ namespace CMR_System {
 			char* customerNotes_1 = and_SysStringToChar(note_inp);
 			char* customerEmail_1 = and_SysStringToChar(email_inp);
 
+			
 			strcpy_s(customer_info.customerName, customerName_1);
 			strcpy_s(customer_info.customerSurname, customerSurname_1);
 			strcpy_s(customer_info.customerPhone, customerPhone_1);
 			strcpy_s(customer_info.customerNotes, customerNotes_1);
 			strcpy_s(customer_info.customerEmail, customerEmail_1);
+			
+
 
 			//Check if fields are not empty 
 			if (this->nameInput->Text->Length == 0 || this->surnameInput->Text->Length == 0 || this->phoneInput->Text->Length == 0 || this->noteInput->Text->Length == 0 || this->email_input->Text->Length == 0)
@@ -396,11 +402,13 @@ namespace CMR_System {
 				validated = false;
 			} else {
 				this->label7->Visible = false;
+
+
 			//Validate customer name
 			for (int i = 0; i < strlen(customerName_1); i++)
 			{
 				//Check if name contains only letters
-				if (isalpha(customerName_1[i])==0)
+				if (isalpha(customer_info.customerName[i])==0)
 				{
 					this->label3->Visible = true;
 					validated = false;
@@ -409,15 +417,20 @@ namespace CMR_System {
 				}
 				else { this->label3->Visible = false; }
 
-				if (islower(customerName_1[0])) {
-					customerName_1[0] = toupper(customerName_1[0]);
+				if (islower(customer_info.customerName[0])!=0) {
+					customer_info.customerName[0] = toupper(customer_info.customerName[0]);
 				}
 				else {
-					customerName_1[i + 1] = tolower(customerName_1[i + 1]);
+					customer_info.customerName[i + 1] = tolower(customer_info.customerName[i + 1]);
 				}
 
-				//Validate customer surname
-				if (isalpha(customerSurname_1[i]) == 0)
+			}
+
+			//Validate customer surname
+			for (int i = 0; i < strlen(customerSurname_1); i++)
+			{
+				
+				if (isalpha(customer_info.customerSurname[i]) == 0)
 				{
 					this->label4->Visible = true;
 					validated = false;
@@ -426,31 +439,35 @@ namespace CMR_System {
 				else { this->label4->Visible = false; }
 
 
-				if (islower(customerSurname_1[0])) {
-					customerSurname_1[0] = toupper(customerSurname_1[0]);
+				if (islower(customer_info.customerSurname[0])!=0) {
+					customer_info.customerSurname[0] = toupper(customer_info.customerSurname[0]);
 				}
 				else {
-					customerSurname_1[i + 1] = tolower(customerSurname_1[i + 1]);
+					customer_info.customerSurname[i + 1] = tolower(customer_info.customerSurname[i + 1]);
 				}
-
+			}
+				
+			for (int i = 0; i < strlen(customerPhone_1); i++) {
 				//Validate phone number
-				if (!isdigit(customerPhone_1[i])) {
+				if (isdigit(customerPhone_1[i])==0) {
 					this->label5->Visible = true;
 					validated = false;
 					break;
 				}
 				else { this->label5->Visible = false; }
-
-				//Validate email
-				regex reg("([\\w_]+)(@)([\\w]+)(\.)([a-z]{2,5})");
-				if (!(regex_match(customerEmail_1, reg)))
-				{
-					this->label6->Visible = true;
-					validated = false;
-					break;
-				}
-				else { this->label6->Visible = false; }
 			}
+
+				
+
+			//Validate email
+			regex reg("([\\w_]+)(@)([\\w]+)(\.)([a-z]{2,5})");
+			if (!(regex_match(customerEmail_1, reg)))
+			{
+				this->label6->Visible = true;
+				validated = false;
+			}
+			else { this->label6->Visible = false; }
+			
 
 			}
 
@@ -479,16 +496,17 @@ namespace CMR_System {
 				noteInput->Text = "";
 				email_input->Text = "";
 				
-			}
-						
+			}			
 	}
 
 	//if closing customer form, display main form
 	private: System::Void Customer_Form_FormClosing(System::Object^  sender, System::Windows::Forms::FormClosingEventArgs^  e) {
+		this->Owner->Show();
 		this->Hide();
-		//MainWindow^ new_win = gcnew MainWindow();
-		//new_win->Show();
 		
 	}
+
+
+
 };
 }
