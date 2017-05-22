@@ -7,6 +7,8 @@ struct Customer_Struct {
 	char customerPhone[50];
 	char customerNotes[250];
 	char customerEmail[30];
+	char workingWith[50];
+	int customerId;
 };
 
 
@@ -16,6 +18,11 @@ struct CoWorker {
 	char co_phone[90];
 	char co_email[90];
 	char co_position[90];
+};
+
+struct Login {
+	char username[90];
+	char password[90];
 };
 
 

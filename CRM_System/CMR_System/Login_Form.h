@@ -4,14 +4,6 @@
 #include "MainWindow.h"
 
 
-struct Login {
-	char username[90];
-	char password[90];
-	bool rememberMe;
-};
-
-
-
 namespace CMR_System {
 
 	using namespace std;
@@ -28,7 +20,7 @@ namespace CMR_System {
 	/// </summary>
 	public ref class Login_Form : public System::Windows::Forms::Form
 	{
-		
+
 	public:
 		Login_Form(void)
 		{
@@ -111,7 +103,7 @@ namespace CMR_System {
 			// 
 			// passwordInp
 			// 
-			this->passwordInp->Location = System::Drawing::Point(108, 248);
+			this->passwordInp->Location = System::Drawing::Point(113, 248);
 			this->passwordInp->Name = L"passwordInp";
 			this->passwordInp->PasswordChar = '*';
 			this->passwordInp->Size = System::Drawing::Size(115, 20);
@@ -123,7 +115,7 @@ namespace CMR_System {
 			this->loginBtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->loginBtn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->loginBtn->ForeColor = System::Drawing::Color::Transparent;
-			this->loginBtn->Location = System::Drawing::Point(113, 331);
+			this->loginBtn->Location = System::Drawing::Point(125, 331);
 			this->loginBtn->Name = L"loginBtn";
 			this->loginBtn->Size = System::Drawing::Size(91, 32);
 			this->loginBtn->TabIndex = 0;
@@ -149,7 +141,7 @@ namespace CMR_System {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(109, 216);
+			this->label2->Location = System::Drawing::Point(115, 216);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(86, 20);
 			this->label2->TabIndex = 4;
@@ -212,40 +204,38 @@ namespace CMR_System {
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"Login_Form";
 			this->Text = L"Login";
+			this->Load += gcnew System::EventHandler(this, &Login_Form::Login_Form_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	
+
 		//Convert String to char array
 		char * and_SysStringToChar(System::String^ string)
 		{
 			return (char*)(void*)Marshal::StringToHGlobalAnsi(string);
 		}
 
-	//Login 	
+		//Login 	
 	public: System::Void loginBtn_Click(System::Object^  sender, System::EventArgs^  e) {
 		/*
 		time_t tt = chrono::system_clock::to_time_t(chrono::system_clock::now());
 		struct tm * ptm = localtime(&tt);
 		int currentHours = ptm->tm_hour;
 		int currentMins = ptm->tm_min+30;
-
 		int remaindMin;
 
 		if (currentMins >= 60)
 		{
 			currentHours += 1;
 			remaindMin = currentMins - 60;
-			cout << "Current time: " << currentHours << ":" << remaindMin;
-		}
-		else {
-			cout << "Current time: " << currentHours << ":" << currentMins;
+			//cout << "Current time: " << currentHours << ":" << remaindMin;
 		}
 		*/
 
 		Login login_struct;
+
 
 		String^ username_input = usernameInp->Text;
 		String^ password_input = passwordInp->Text;
@@ -266,27 +256,69 @@ namespace CMR_System {
 			if (!readFile) {
 				MessageBox::Show("Cannot open file!");
 			}
-			
+
 			else {
 
 				readFile >> login_struct.username;
 				readFile >> login_struct.password;
-				//readFile >> login_struct.rememberMe;
 
-				if (strcmp(login_struct.username, username) == 0 && strcmp(login_struct.password, password) == 0) 
-				{	
+
+				if (strcmp(login_struct.username, username) == 0 && strcmp(login_struct.password, password) == 0)
+				{
 					MainWindow^ main_win = gcnew MainWindow(username_input);
-					
-					
 					main_win->Show();
 					this->Hide();
 				}
-				
+
 				else {
 					this->label3->Visible = true;
 				}
 			}
 		}//end of if
 	}//end of func
+
+
+	private: System::Void Login_Form_Load(System::Object^  sender, System::EventArgs^  e) {
+
+		Login login_struct;
+		//CoWorker co_worker;
+		int workerCount;
+		CoWorker *co_worker = workerOutput(&workerCount);
+
+		
+		ofstream fileW;
+		fileW.open("login.data", ios::binary);
+		
+
+			for (int i = 0; i < workerCount; i++)
+			{
+				fileW.write((char*)co_worker[i].co_name, sizeof(co_worker[i].co_name));
+			}
+			fileW.close();
+
+
+			ifstream readFile;
+			readFile.open("login.data", ios::binary);
+			if (!readFile) {
+				MessageBox::Show("Couldn't open file!");
+
+			}
+			else {
+
+				readFile.seekg(0, ios::end);
+				int size = readFile.tellg();
+				int count = size / sizeof(Login);
+				readFile.seekg(0, ios::beg);
+				Login *login_struct = new Login[count];
+				readFile.read((char*)login_struct, count * sizeof(Login));
+			
+
+				for (int i = 0; i < count; i++)
+				{
+					String^ cx = gcnew String(reinterpret_cast<const char*>(login_struct[i].username));
+					//MessageBox::Show(cx);
+				}
+			}
+	}
 };
 }

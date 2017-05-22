@@ -1,28 +1,41 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (CMR_System.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Headers.cpp
-Headers.cpp(27): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
-Headers.cpp(50): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+  Customer_Form.cpp
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(511): warning C4129: '.': unrecognized character escape sequence
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(420): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(458): warning C4018: '<': signed/unsigned mismatch
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(479): warning C4018: '<': signed/unsigned mismatch
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(499): warning C4018: '<': signed/unsigned mismatch
+  Customer_List.cpp
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(511): warning C4129: '.': unrecognized character escape sequence
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(420): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(458): warning C4018: '<': signed/unsigned mismatch
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(479): warning C4018: '<': signed/unsigned mismatch
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(499): warning C4018: '<': signed/unsigned mismatch
   Login_Form.cpp
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\Customer_Form.h(463): warning C4129: '.': unrecognized character escape sequence
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\Customer_Form.h(408): warning C4018: '<': signed/unsigned mismatch
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\Customer_Form.h(430): warning C4018: '<': signed/unsigned mismatch
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\Customer_Form.h(450): warning C4018: '<': signed/unsigned mismatch
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\Coworkers.h(276): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\MainWindow.h(412): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\MainWindow.h(423): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\MainWindow.h(435): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(511): warning C4129: '.': unrecognized character escape sequence
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(420): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(458): warning C4018: '<': signed/unsigned mismatch
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(479): warning C4018: '<': signed/unsigned mismatch
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(499): warning C4018: '<': signed/unsigned mismatch
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Coworkers.h(276): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\MainWindow.h(412): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\MainWindow.h(423): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\MainWindow.h(435): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Login_Form.h(309): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Login_Form.h(283): warning C4101: 'login_struct': unreferenced local variable
   MainWindow.cpp
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\Customer_Form.h(463): warning C4129: '.': unrecognized character escape sequence
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\Customer_Form.h(408): warning C4018: '<': signed/unsigned mismatch
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\Customer_Form.h(430): warning C4018: '<': signed/unsigned mismatch
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\Customer_Form.h(450): warning C4018: '<': signed/unsigned mismatch
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\Coworkers.h(276): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\MainWindow.h(412): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\MainWindow.h(423): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\MainWindow.h(435): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(511): warning C4129: '.': unrecognized character escape sequence
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(420): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(458): warning C4018: '<': signed/unsigned mismatch
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(479): warning C4018: '<': signed/unsigned mismatch
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Customer_Form.h(499): warning C4018: '<': signed/unsigned mismatch
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Coworkers.h(276): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\MainWindow.h(412): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\MainWindow.h(423): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\MainWindow.h(435): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Login_Form.h(309): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+c:\users\vitja\desktop\crm_system\crm_system\cmr_system\Login_Form.h(283): warning C4101: 'login_struct': unreferenced local variable
   Generating Code...
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\headers.cpp(60): warning C4715: 'workerOutput': not all control paths return a value
-c:\users\vitja\desktop\crm_system_original\crm_system\cmr_system\headers.cpp(37): warning C4715: 'fileOutput': not all control paths return a value
   Coworkers.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
-  CMR_System.vcxproj -> C:\Users\Vitja\Desktop\CRM_System_Original\CRM_System\Debug\CRM_System.exe
-  CMR_System.vcxproj -> C:\Users\Vitja\Desktop\CRM_System_Original\CRM_System\Debug\CRM_System.pdb (Partial PDB)
+  CMR_System.vcxproj -> C:\Users\Vitja\Desktop\CRM_System\CRM_System\Debug\CRM_System.exe
+  CMR_System.vcxproj -> C:\Users\Vitja\Desktop\CRM_System\CRM_System\Debug\CRM_System.pdb (Partial PDB)

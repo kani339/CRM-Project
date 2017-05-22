@@ -13,19 +13,6 @@
 #include "Headers.h"
 
 
-/*
-struct Customer_Struct {
-	char customerName[50];
-	char customerSurname[50];
-	char customerPhone[50];
-	char customerNotes[250];
-	char customerEmail[30];
-};
-
-*/
-
-
-
 namespace CMR_System {
 
 	using namespace std;
@@ -92,6 +79,12 @@ namespace CMR_System {
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::Label^  label7;
 
+	private: System::Windows::Forms::Label^  label8;
+	private: System::Windows::Forms::ComboBox^  comboBox1;
+	private: System::Windows::Forms::Label^  label9;
+
+
+
 	private: System::ComponentModel::IContainer^  components;
 
 
@@ -129,6 +122,9 @@ namespace CMR_System {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -183,7 +179,7 @@ namespace CMR_System {
 			// 
 			// saveBtn
 			// 
-			this->saveBtn->Location = System::Drawing::Point(137, 451);
+			this->saveBtn->Location = System::Drawing::Point(201, 506);
 			this->saveBtn->Name = L"saveBtn";
 			this->saveBtn->Size = System::Drawing::Size(75, 23);
 			this->saveBtn->TabIndex = 5;
@@ -196,7 +192,7 @@ namespace CMR_System {
 			this->customerPhone->AutoSize = true;
 			this->customerPhone->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->customerPhone->Location = System::Drawing::Point(42, 214);
+			this->customerPhone->Location = System::Drawing::Point(41, 214);
 			this->customerPhone->Name = L"customerPhone";
 			this->customerPhone->Size = System::Drawing::Size(59, 20);
 			this->customerPhone->TabIndex = 6;
@@ -206,12 +202,12 @@ namespace CMR_System {
 			// 
 			this->phoneInput->Location = System::Drawing::Point(147, 216);
 			this->phoneInput->Name = L"phoneInput";
-			this->phoneInput->Size = System::Drawing::Size(100, 20);
+			this->phoneInput->Size = System::Drawing::Size(109, 20);
 			this->phoneInput->TabIndex = 7;
 			// 
 			// noteInput
 			// 
-			this->noteInput->Location = System::Drawing::Point(137, 328);
+			this->noteInput->Location = System::Drawing::Point(144, 328);
 			this->noteInput->Multiline = true;
 			this->noteInput->Name = L"noteInput";
 			this->noteInput->Size = System::Drawing::Size(226, 94);
@@ -233,7 +229,7 @@ namespace CMR_System {
 			this->emailLabel->AutoSize = true;
 			this->emailLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->emailLabel->Location = System::Drawing::Point(38, 273);
+			this->emailLabel->Location = System::Drawing::Point(39, 273);
 			this->emailLabel->Name = L"emailLabel";
 			this->emailLabel->Size = System::Drawing::Size(57, 20);
 			this->emailLabel->TabIndex = 10;
@@ -243,7 +239,7 @@ namespace CMR_System {
 			// 
 			this->email_input->Location = System::Drawing::Point(147, 275);
 			this->email_input->Name = L"email_input";
-			this->email_input->Size = System::Drawing::Size(100, 20);
+			this->email_input->Size = System::Drawing::Size(109, 20);
 			this->email_input->TabIndex = 11;
 			// 
 			// label2
@@ -252,7 +248,7 @@ namespace CMR_System {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label2->ForeColor = System::Drawing::Color::Green;
-			this->label2->Location = System::Drawing::Point(134, 507);
+			this->label2->Location = System::Drawing::Point(188, 589);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(120, 16);
 			this->label2->TabIndex = 12;
@@ -291,7 +287,7 @@ namespace CMR_System {
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label5->ForeColor = System::Drawing::Color::Red;
-			this->label5->Location = System::Drawing::Point(149, 250);
+			this->label5->Location = System::Drawing::Point(148, 250);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(127, 13);
 			this->label5->TabIndex = 15;
@@ -317,18 +313,70 @@ namespace CMR_System {
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label7->ForeColor = System::Drawing::Color::Red;
-			this->label7->Location = System::Drawing::Point(137, 484);
+			this->label7->Location = System::Drawing::Point(188, 557);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(117, 13);
 			this->label7->TabIndex = 17;
 			this->label7->Text = L"Please fill all inputs";
 			this->label7->Visible = false;
 			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label8->Location = System::Drawing::Point(12, 462);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(123, 20);
+			this->label8->TabIndex = 21;
+			this->label8->Text = L"Choose Worker:";
+			// 
+			// comboBox1
+			// 
+
+			int workerCount;
+			CoWorker *co_worker = workerOutput(&workerCount);
+
+			for (int i = 0; i < workerCount; i++)
+			{
+				String^ worker = gcnew String(reinterpret_cast<const char*>(co_worker[i].co_name));
+				String^ position = gcnew String(reinterpret_cast<const char*>(co_worker[i].co_position));
+				this->comboBox1->Items->Add(worker+" ( "+position+" )");
+				this->comboBox1->Width = 100;
+			}
+
+			//selected worker
+			String^ selected = comboBox1->GetItemText(this->comboBox1->SelectedItem);
+			char* working_with = and_SysStringToChar(selected);
+			//strcpy_s(customer_struct.workingWith, working_with);
+			
+
+			this->comboBox1->Location = System::Drawing::Point(184, 463);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(121, 21);
+			this->comboBox1->TabIndex = 0;
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label9->ForeColor = System::Drawing::Color::Red;
+			this->label9->Location = System::Drawing::Point(147, 436);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(234, 13);
+			this->label9->TabIndex = 22;
+			this->label9->Text = L"Notes cannot be more than 250 symbols";
+			this->label9->Visible = false;
+			// 
 			// Customer_Form
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(454, 540);
+			this->ClientSize = System::Drawing::Size(454, 617);
+			this->Controls->Add(this->label9);
+			this->Controls->Add(this->comboBox1);
+			this->Controls->Add(this->label8);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
@@ -352,7 +400,6 @@ namespace CMR_System {
 			this->Name = L"Customer_Form";
 			this->Text = L"Customer_Form";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &Customer_Form::Customer_Form_FormClosing);
-			
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -368,6 +415,10 @@ namespace CMR_System {
 
 	//Save to File
 	private: System::Void saveBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+
+			//Customer random ID
+			srand(time(NULL));
+			int randId = rand() % 1000 + 1000;
 
 			Customer_Struct customer_info;
 			ofstream fileCreate;
@@ -392,9 +443,8 @@ namespace CMR_System {
 			strcpy_s(customer_info.customerPhone, customerPhone_1);
 			strcpy_s(customer_info.customerNotes, customerNotes_1);
 			strcpy_s(customer_info.customerEmail, customerEmail_1);
-			
-
-
+			customer_info.customerId = randId;
+		
 			//Check if fields are not empty 
 			if (this->nameInput->Text->Length == 0 || this->surnameInput->Text->Length == 0 || this->phoneInput->Text->Length == 0 || this->noteInput->Text->Length == 0 || this->email_input->Text->Length == 0)
 			{
@@ -413,7 +463,6 @@ namespace CMR_System {
 					this->label3->Visible = true;
 					validated = false;
 					break;
-					
 				}
 				else { this->label3->Visible = false; }
 
@@ -457,19 +506,23 @@ namespace CMR_System {
 				else { this->label5->Visible = false; }
 			}
 
-				
-
+			
 			//Validate email
-			regex reg("([\\w_]+)(@)([\\w]+)(\.)([a-z]{2,5})");
+			regex reg("([\\w_]+)(@)([\\w]+)(\.)([a-z]{2,4})");
 			if (!(regex_match(customerEmail_1, reg)))
 			{
 				this->label6->Visible = true;
 				validated = false;
 			}
 			else { this->label6->Visible = false; }
-			
 
 			}
+
+			//selected worker
+			String^ selected = comboBox1->GetItemText(this->comboBox1->SelectedItem->ToString());
+			//selected = selected->ToString();
+			char* working_with = and_SysStringToChar(selected);
+			strcpy_s(customer_info.workingWith, working_with);
 
 			//If no error occured save to file
 			if (validated)
@@ -495,17 +548,15 @@ namespace CMR_System {
 				phoneInput->Text = "";
 				noteInput->Text = "";
 				email_input->Text = "";
-				
-			}			
+				//this->comboBox1->Items->Clear();
+			}
 	}
 
 	//if closing customer form, display main form
 	private: System::Void Customer_Form_FormClosing(System::Object^  sender, System::Windows::Forms::FormClosingEventArgs^  e) {
 		this->Owner->Show();
-		this->Hide();
-		
+		this->Hide();	
 	}
-
 
 
 };
