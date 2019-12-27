@@ -3,7 +3,7 @@
 Made with C++ and Windows Forms.
 
 
-Desktop app made as University Project.
+Desktop app made for C++ Programming course.
 
-Main idea of the application is to store data into binary files about the customers, and display data in the UI screen.
+Main idea of the application is to store customers data into binary files and display data in the UI.
 Apply different kind of sorting methods.
